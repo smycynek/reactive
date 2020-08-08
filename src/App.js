@@ -85,6 +85,8 @@ function App() {
       <button className="btn btn-primary" type="button" onClick={getRandom}>
         Get More Random Radioactive Bits
       </button>
+      <hr />
+      <small><a href="https://github.com/smycynek/reactive">https://github.com/smycynek/reactive</a></small>
     </div>
   );
 }
