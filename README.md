@@ -1,4 +1,4 @@
-# reative
+# reactive
 
 A front-end for the HotBits random-number web service.
 (https://www.fourmilab.ch/hotbits/)
