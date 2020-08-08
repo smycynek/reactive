@@ -3,46 +3,7 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-
-/** make a 0-padded string from a number */
-function pad(num, size = 3) {
-  let s = `${num}`;
-  while (s.length < size) s = `0${s}`;
-  return s;
-}
-
-
-/** Format data in padded, monospaced grid */
-function MatrixRender(dataInt) {
-  const data = dataInt.data.map((datum) => pad(datum));
-  return (
-    <div
-      style={{
-        fontFamily: 'monospace',
-        paddingLeft: '50px',
-        paddingBottom: '20px',
-      }}
-    >
-      <div className="row">
-        <div className="col-1 m-1 p-1">{data[0]}</div>
-        <div className="col-1 m-1 p-1">{data[1]}</div>
-        <div className="col-1 m-1 p-1">{data[2]}</div>
-      </div>
-
-      <div className="row">
-        <div className="col-1 m-1 p-1">{data[3]}</div>
-        <div className="col-1 m-1 p-1">{data[4]}</div>
-        <div className="col-1 m-1 p-1">{data[5]}</div>
-      </div>
-
-      <div className="row">
-        <div className="col-1 m-1 p-1">{data[6]}</div>
-        <div className="col-1 m-1 p-1">{data[7]}</div>
-        <div className="col-1 m-1 p-1">{data[8]}</div>
-      </div>
-    </div>
-  );
-}
+import Matrix from './Matrix';
 
 /** Main app */
 function App() {
@@ -65,26 +26,27 @@ function App() {
   useEffect(getRandom, []);
   return (
     <div>
-      <h1 className="text-primary">Reactive</h1>
-      <h2 className="text-seconary">
-        A REST wrapper and modern UI for HotBits
-      </h2>
-      <p>
-        {' '}
-        <a href="https://www.fourmilab.ch/hotbits/">HotBits</a> is a random
+      <h1 className="text-primary">Reactive: A modern UI for HotBits</h1>
+
+
+      <h3 className="text-info">It doesn&apos;t get much more random than this.</h3>
+      <Matrix data={rnd} />
+      <button className="btn btn-primary" type="button" onClick={getRandom}>
+        More Radioactive Bits!
+      </button>
+      <div style={{padding: '20px'}}>
+        <p>
+          {' '}
+          <a href="https://www.fourmilab.ch/hotbits/">HotBits</a> is a random
         number generator web service seeded from measurement of background
         radiation, such as x-rays and gamma rays.  It was created by John Walker,
         founder of Autodesk, so of course, I have a soft-spot for it :)
-      </p>
-      <p>
-        <i>The HotBits site has some issues with CORS, so I run it through a proxy
+        </p>
+        <p>
+          <i>The HotBits site has some issues with CORS, so I run it through a proxy
         service so React can call it.</i>
-      </p>
-      <h3 className="text-info">It doesn&apos;t get much more random than this.</h3>
-      <MatrixRender data={rnd} />
-      <button className="btn btn-primary" type="button" onClick={getRandom}>
-        Get More Random Radioactive Bits
-      </button>
+        </p>
+      </div>
       <hr />
       <small><a href="https://github.com/smycynek/reactive">https://github.com/smycynek/reactive</a></small>
     </div>
