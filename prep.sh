@@ -1,6 +1,6 @@
 #! /bin/bash
 yarn build
-rm -rf mortgage
-rm mortgage.zip
-mv build mortgage
-zip -r mortgage.zip mortgage
+rm -rf reactive
+rm reactive.zip
+mv build reactive
+zip -r reactive.zip reactive

@@ -47,7 +47,8 @@ function MatrixRender(dataInt) {
 /** Main app */
 function App() {
   const [rnd, setRnd] = useState([1, 2, 3]);
-  const url = 'http://10.0.0.197:8000/hotwrapper';
+  const url = 'https://calm-everglades-94030.herokuapp.com';
+  // const url = 'http://10.0.0.197:8000/hotwrapper';
 
   /** Get random byte values from HotBits */
   function getRandom() {
@@ -72,8 +73,12 @@ function App() {
         {' '}
         <a href="https://www.fourmilab.ch/hotbits/">HotBits</a> is a random
         number generator web service seeded from measurement of background
-        radiation, such as x-rays and gamma rays It was created by John Walker,
-        founder of Autodesk.
+        radiation, such as x-rays and gamma rays.  It was created by John Walker,
+        founder of Autodesk, so of course, I have a soft-spot for it :)
+      </p>
+      <p>
+        <i>The HotBits site has some issues with CORS, so I run it through a proxy
+        service so React can call it.</i>
       </p>
       <h3 className="text-info">It doesn&apos;t get much more random than this.</h3>
       <MatrixRender data={rnd} />
