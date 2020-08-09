@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable max-len */
 /* eslint-disable valid-jsdoc */
 import React from 'react';
@@ -12,7 +13,7 @@ function pad(num, size = 3) {
 }
 
 /** Format data in padded, monospaced grid */
-const Matrix = ({data}) => {
+const Matrix = ({ data }) => {
   const dataFormatted = data.map((datum) => pad(datum));
   return (
     <div
@@ -44,7 +45,8 @@ const Matrix = ({data}) => {
 };
 
 Matrix.propTypes = {
-  data: PropTypes.array,
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.array.isRequired,
 };
 
 export default Matrix;

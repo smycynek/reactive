@@ -1,9 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import Matrix from './Matrix';
 
 test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const { aMatrix } = render(<Matrix data={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />);
 });
