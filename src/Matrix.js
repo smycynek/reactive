@@ -2,6 +2,7 @@
 /* eslint-disable valid-jsdoc */
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import PropTypes from 'prop-types';
 
 /** make a 0-padded string from a number */
 function pad(num, size = 3) {
@@ -11,8 +12,8 @@ function pad(num, size = 3) {
 }
 
 /** Format data in padded, monospaced grid */
-const Matrix = (dataInt) => {
-  const data = dataInt.data.map((datum) => pad(datum));
+const Matrix = ({data}) => {
+  const dataFormatted = data.map((datum) => pad(datum));
   return (
     <div
       style={{
@@ -22,24 +23,28 @@ const Matrix = (dataInt) => {
       }}
     >
       <div className="row">
-        <div className="col-1 m-1 p-1">{data[0]}</div>
-        <div className="col-1 m-1 p-1">{data[1]}</div>
-        <div className="col-1 m-1 p-1">{data[2]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[0]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[1]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[2]}</div>
       </div>
 
       <div className="row">
-        <div className="col-1 m-1 p-1">{data[3]}</div>
-        <div className="col-1 m-1 p-1">{data[4]}</div>
-        <div className="col-1 m-1 p-1">{data[5]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[3]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[4]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[5]}</div>
       </div>
 
       <div className="row">
-        <div className="col-1 m-1 p-1">{data[6]}</div>
-        <div className="col-1 m-1 p-1">{data[7]}</div>
-        <div className="col-1 m-1 p-1">{data[8]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[6]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[7]}</div>
+        <div className="col-1 m-1 p-1">{dataFormatted[8]}</div>
       </div>
     </div>
   );
+};
+
+Matrix.propTypes = {
+  data: PropTypes.array,
 };
 
 export default Matrix;

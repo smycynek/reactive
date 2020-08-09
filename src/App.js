@@ -6,11 +6,12 @@ import Reactive from './Reactive';
 
 /** Main app */
 function App() {
+  const proxyEndpoint = 'https://calm-everglades-94030.herokuapp.com';
   return (
     <div>
       <h1 className="text-primary">Reactive: A modern UI for HotBits</h1>
-      <h3 className="text-info">It doesn&apos;t get much more random than this.</h3>
-      <Reactive/>
+      <p className="text-info">It doesn&apos;t get much more random than this.</p>
+      <Reactive endpoint={proxyEndpoint}/>
       <div style={{padding: '20px'}}>
         <p>
           {' '}
@@ -18,8 +19,6 @@ function App() {
         number generator web service seeded from measurement of background
         radiation, such as x-rays and gamma rays.  It was created by John Walker,
         founder of Autodesk, so of course, I have a soft-spot for it :)
-        </p>
-        <p>
           <i>The HotBits site has some issues with CORS, so I run it through a proxy
         service so React can call it.</i>
         </p>
