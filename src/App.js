@@ -6,7 +6,7 @@ import Reactive from './Reactive';
 
 /** Main app */
 function App() {
-  const proxyEndpoint = 'https://calm-everglades-94030.herokuapp.com';
+  const proxyEndpoint = process.env.REACT_APP_PROXY_ENDPOINT;
   return (
     <div>
       <h1 className="text-primary">Reactive: A modern UI for HotBits</h1>
