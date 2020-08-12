@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable max-len */
 /* eslint-disable valid-jsdoc */
@@ -10,9 +11,11 @@ import Matrix from './Matrix';
 const Reactive = ({ endpoint }) => {
   const [randomBytes, setRandomBytes] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [waiting, setWaiting] = useState(true);
+  const [error, setError] = useState(false);
   /** Get random byte values from HotBits */
   function getRandom() {
     setWaiting(true);
+    setError(false);
     axios
       .get(endpoint, {
         mode: 'no-cors',
@@ -21,6 +24,11 @@ const Reactive = ({ endpoint }) => {
         const { data } = res;
         setRandomBytes(data);
         setWaiting(false);
+      },
+      (err) => {
+        setWaiting(false);
+        setError(true);
+        console.log(err);
       });
   }
 
@@ -38,6 +46,16 @@ const Reactive = ({ endpoint }) => {
           style={{ marginLeft: '10px' }}
         >
           Waiting on data...
+        </span>
+        )}
+
+      {error
+        && (
+        <span
+          className="text-danger"
+          style={{ marginLeft: '10px' }}
+        >
+          Network error!
         </span>
         )}
     </div>
