@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import MatrixDataContext from './MatrixDataContext';
 import Matrix from './Matrix';
 
 const Reactive = ({ endpoint }) => {
@@ -35,7 +36,9 @@ const Reactive = ({ endpoint }) => {
   useEffect(getRandom, []);
   return (
     <div>
-      <Matrix data={randomBytes} />
+      <MatrixDataContext.Provider value={randomBytes}>
+        <Matrix />
+      </MatrixDataContext.Provider>
       <button className={waiting ? 'btn btn-secondary' : 'btn btn-primary'} type="button" onClick={getRandom}>
         More Radioactive Bits!
       </button>

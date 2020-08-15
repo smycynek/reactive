@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable max-len */
 /* eslint-disable valid-jsdoc */
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import PropTypes from 'prop-types';
-
+import MatrixDataContext from './MatrixDataContext';
 /** make a 0-padded string from a number */
 function pad(num, size = 3) {
   let s = `${num}`;
@@ -13,7 +12,8 @@ function pad(num, size = 3) {
 }
 
 /** Format data in padded, monospaced grid */
-const Matrix = ({ data }) => {
+const Matrix = () => {
+  const data = useContext(MatrixDataContext);
   const dataFormatted = data.map((datum) => pad(datum));
   return (
     <div
@@ -42,11 +42,6 @@ const Matrix = ({ data }) => {
       </div>
     </div>
   );
-};
-
-Matrix.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  data: PropTypes.array.isRequired,
 };
 
 export default Matrix;
